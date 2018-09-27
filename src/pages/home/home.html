@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>Home</ion-title>
+    <ion-buttons end (click)="addPerson()">
+      <button ion-button icon-only>
+        <ion-icon name="md-add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <h4 padding-left>User List</h4>
+
+  <ion-card *ngFor="let row_user of user_list">
+    <ion-item>
+      <ion-avatar item-start>
+        <img *ngIf="row_user.avatar==''" src="assets/imgs/rundmc-live.png">
+        <img *ngIf="row_user.avatar!=''" src="{{row_user.avatar}}">
+      </ion-avatar>
+      <h2 (click)="editPerson(row_user.id)">{{row_user.name}}</h2>
+      <p item-end>Age: {{row_user.dob | age }}</p>
+      <p>{{row_user.email}}</p>
+    </ion-item>
+  </ion-card>
+
+  <ion-card *ngIf="user_list==''">
+    <ion-card-content>
+      <p>No users found !</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

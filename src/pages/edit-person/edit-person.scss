@@ -1,0 +1,33 @@
+page-edit-person {
+  ion-list {
+    ion-item:last-child {
+      border-bottom: none !important;
+      box-shadow: none !important;
+    }
+
+    ion-item {
+      padding-left: 0px !important;
+
+      .item-inner {
+        padding-right: 0px !important;
+        border-bottom: none !important;
+        box-shadow: none !important;
+      }
+
+      ion-input {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 0px 10px;
+      }
+
+      ion-datetime {
+        border: 1px solid #ccc;
+        padding: 10px !important;
+      }
+    }
+
+    span {
+      font-size: 11px;
+    }
+  }
+}

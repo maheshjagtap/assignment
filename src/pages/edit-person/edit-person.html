@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>Edit Person</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+
+  <div *ngIf="isLoadData">
+    <form [formGroup]="editPersonForm" (ngSubmit)="onSend(editPersonForm.value)">
+      <ion-list>
+        <ion-item no-lines [class.error]="!name.valid && name.touched">
+          <ion-label stacked>Name</ion-label>
+          <ion-input type="text" [formControl]="name"></ion-input>
+        </ion-item>
+        <div *ngIf="name.hasError('required') && name.touched" class="error-box">Please enter name</div>
+
+
+        <ion-item no-lines [class.error]="!email.valid && email.touched">
+          <ion-label stacked>Email</ion-label>
+          <ion-input type="email" [formControl]="email"></ion-input>
+        </ion-item>
+        <div *ngIf="email.hasError('email') && email.touched" class="error-box">Please enter email.</div>
+
+        <ion-item no-lines [class.error]="!dob.valid && dob.touched">
+          <ion-label stacked>DOB</ion-label>
+          <ion-datetime displayFormat="MM/DD/YYYY" [formControl]="dob"></ion-datetime>
+        </ion-item>
+        <div *ngIf="dob.hasError('required') && dob.touched" class="error-box">Please select date of birth.</div>
+
+        <ion-item no-lines [class.error]="!country.valid && country.touched">
+          <ion-label stacked>Country</ion-label>
+          <ion-input type="text" [formControl]="country"></ion-input>
+        </ion-item>
+        <div *ngIf="country.hasError('required') && country.touched" class="error-box">Please enter country name.</div>
+
+        <ion-item no-lines [class.error]="!avatar.valid && avatar.touched">
+          <ion-label stacked>Avatar Url</ion-label>
+          <ion-input type="text" [formControl]="avatar"></ion-input>
+        </ion-item>
+        <div *ngIf="avatar.hasError('required') && avatar.touched" class="error-box">Please enter avatar url.</div>
+        <span>(URL : https://gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50)</span>
+      </ion-list>
+      <button block ion-button type="submit" [disabled]="!editPersonForm.valid">Update</button>
+    </form>
+  </div>
+</ion-content>
